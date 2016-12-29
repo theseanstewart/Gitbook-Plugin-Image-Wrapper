@@ -1,0 +1,20 @@
+{
+    "name": "gitbook-plugin-image-wrapper",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "Apache-2.0",
+    "description": "This plugin wraps a div with the CSS class .image-wrapper around images so you can style it accordingly",
+    "engines": {
+        "gitbook": ">1.x.x"
+    },
+    "dependencies": {
+        "cheerio": "^0.19.0"
+    },
+    "devDependencies": {
+        "gitbook-plugin": "^4.0.0"
+    },
+    "gitbook": {
+        "properties": {
+        }
+    }
+}
