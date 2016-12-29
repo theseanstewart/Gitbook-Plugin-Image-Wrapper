@@ -1,6 +1,6 @@
 {
     "name": "gitbook-plugin-image-wrapper",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "index.js",
     "license": "Apache-2.0",
     "description": "This plugin wraps a div with the CSS class .image-wrapper around images so you can style it accordingly",
@@ -13,6 +13,18 @@
     "devDependencies": {
         "gitbook-plugin": "^4.0.0"
     },
+    "homepage": "https://github.com/theseanstewart/Gitbook-Plugin-Image-Wrapper",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/theseanstewart/Gitbook-Plugin-Image-Wrapper.git"
+    },
+    "bugs": {
+        "url": "https://github.com/theseanstewart/Gitbook-Plugin-Image-Wrapper/issues"
+    },
+    "keywords": [
+        "gitbook",
+        "gitbook:utility"
+    ],
     "gitbook": {
         "properties": {
         }
