@@ -10,11 +10,17 @@ This plugin will wrap your images in a div with a class of *image-wrapper*. This
 
 ### Installation
 
-Add the plugin to your `book.json`:
+Add the plugin to your `book.json`. Images can be selectively ignored based on
+their class name:
 
 ```
 {
-    "plugins" : [ "image-wrapper" ]
+    "plugins" : [ "image-wrapper" ],
+    "pluginsConfig" : {
+        "image-wrapper" : {
+            "ignore-classes" : [ "class1", "class2", "etc" ]
+        }
+    }
 }
 ```
 
