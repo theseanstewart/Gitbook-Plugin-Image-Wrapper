@@ -1,12 +1,21 @@
-var cheerio = require( "cheerio" )
+var cheerio = require( "cheerio" );
 
-
-var wrapImageTags = function(page){
+var wrapImageTags = function(config, page){
 
     var $ = cheerio.load(page.content);
 
     // Loop through each image found in the page content
     $('img').each(function(){
+
+        // skip the ignored classes
+        if (config['image-wrapper'] &&
+            config['image-wrapper']['ignore-classes']) {
+            var ignores = config['image-wrapper']['ignore-classes'];
+            for (var i = 0, len = ignores.length; i < ignores.length; i++) {
+                if ($(this).attr('class') == ignores[i])
+                    return;
+            }
+        }
 
         // Build the wrapper
         var imageWrapper = $('<div>').addClass('image-wrapper');
@@ -21,10 +30,10 @@ var wrapImageTags = function(page){
 
         // Append the original image
         imageWrapper.append($image);
-        
+
         // Add the image with its wrapper
         $(this).before(imageWrapper);
-        
+
         // Remove the image
         $(this).remove();
     });
@@ -32,18 +41,14 @@ var wrapImageTags = function(page){
     page.content = $.html();
 
     return page;
-
 }
 
 module.exports = {
-
-
     // Map of hooks
     hooks: {
-
-    	'page': function(page){    		
-    		return wrapImageTags(page);
-    	}
+        'page': function(page){
+            return wrapImageTags(this.config.get('pluginsConfig'), page);
+        }
     },
 
     // Map of new blocks
