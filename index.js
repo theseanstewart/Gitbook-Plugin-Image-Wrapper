@@ -15,9 +15,16 @@ var wrapImageTags = function(page){
         var img = $(this);
 
         // Rebuild the image
-        var $image = $('<img>')
+        if (img.attr("alt") === null) {
+            var $image = $('<img>')
                         .attr('src', img.attr('src'))
                         .attr('alt', img.attr('alt'));
+        //data attribute doesn't exist
+        }else{
+            var $image = $('<img>')
+                        .attr('src', img.attr('src'));
+        //data attribute exists
+        }
 
         // Append the original image
         imageWrapper.append($image);
